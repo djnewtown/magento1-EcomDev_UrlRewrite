@@ -17,26 +17,10 @@
  */
 
 /**
- * Configuration test
+ * Module helper
  *
  */
-class EcomDev_UrlRewrite_Test_Config_Main extends EcomDev_PHPUnit_Test_Case_Config
+class EcomDev_UrlRewrite_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    /**
-     * Test model definitions for module
-     * 
-     * @test
-     */
-    public function modelDefinitions()
-    {
-        $this->assertModelAlias(
-            'ecomdev_urlrewrite/indexer', 
-            'EcomDev_UrlRewrite_Model_Indexer'
-        );
-        
-        $this->assertResourceModelAlias(
-            'ecomdev_urlrewrite/indexer', 
-            'EcomDev_UrlRewrite_Model_Mysql4_Indexer'
-        );
-    }
+
 }

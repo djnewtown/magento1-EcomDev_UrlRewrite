@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?php
 /**
  * Alternative Url Rewrite Indexer
  *
@@ -16,15 +15,28 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @author     Ivan Chepurnyi <ivan.chepurnyi@ecomdev.org>
  */
--->
-<config>
-    <modules>
-        <EcomDev_UrlRewrite>
-            <codePool>community</codePool>
-            <active>true</active>
-            <depends>
-                <Mage_Catalog />
-            </depends>
-        </EcomDev_UrlRewrite>
-    </modules>
-</config>
+
+/**
+ * Configuration test
+ *
+ */
+class EcomDev_UrlRewrite_Test_Config_Main extends EcomDev_PHPUnit_Test_Case_Config
+{
+    /**
+     * Test model definitions for module
+     *
+     * @test
+     */
+    public function modelDefinitions()
+    {
+        $this->assertModelAlias(
+            'ecomdev_urlrewrite/indexer',
+            'EcomDev_UrlRewrite_Model_Indexer'
+        );
+
+        $this->assertResourceModelAlias(
+            'ecomdev_urlrewrite/indexer',
+            'EcomDev_UrlRewrite_Model_Mysql4_Indexer'
+        );
+    }
+}

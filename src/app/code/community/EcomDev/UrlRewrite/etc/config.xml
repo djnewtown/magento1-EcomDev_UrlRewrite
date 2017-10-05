@@ -100,7 +100,7 @@
     <phpunit>
         <suite>
             <modules>
-                <EcomDev_UrlRewrite />
+                <EcomDev_UrlRewrite/>
             </modules>
         </suite>
     </phpunit>

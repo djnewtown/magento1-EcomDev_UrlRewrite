@@ -18,13 +18,13 @@
 
 /**
  * Url rewrite indexer model
- * 
+ *
  */
 class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
 {
     /**
      * Define resource model for indexer
-     * 
+     *
      * (non-PHPdoc)
      * @see Varien_Object::_construct()
      */
@@ -32,7 +32,7 @@ class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
     {
         $this->_init('ecomdev_urlrewrite/indexer');
     }
-    
+
     /**
      * Get Indexer description
      *
@@ -42,8 +42,8 @@ class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
     {
         return Mage::helper('ecomdev_urlrewrite')->__('Index product and categories URL rewrites (Alternative by EcomDev)');
     }
-    
-   /**
+
+    /**
      * Register event data during category save process
      *
      * @param Mage_Index_Model_Event $event
@@ -56,10 +56,10 @@ class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
                 $event->addNewData('rewrite_category_ids', array($category->getId()));
             }
         }
-        
+
         return parent::_registerCategoryEvent($event);
     }
-    
+
     /**
      * Process event
      *
@@ -70,6 +70,7 @@ class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
         $data = $event->getNewData();
         if (!empty($data['catalog_url_reindex_all'])) {
             $this->reindexAll();
+
             return $this;
         }
 
@@ -82,14 +83,15 @@ class EcomDev_UrlRewrite_Model_Indexer extends Mage_Catalog_Model_Indexer_Url
         if (isset($data['rewrite_category_ids']) || isset($data['rewrite_product_ids'])) {
             $this->callEventHandler($event);
         }
-        
+
         $this->_getResource()->resetSaveHistory();
+
         return $this;
     }
 
     /**
      * Rebuild all index data
-     * 
+     *
      */
     public function reindexAll()
     {

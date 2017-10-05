@@ -22,17 +22,17 @@ $this->startSetup();
 // Fix auto-increment problem with 1.6
 if (method_exists($this->getConnection(), 'insertFromSelect')) {
     $this->getConnection()->modifyColumn(
-        $this->getTable('ecomdev_urlrewrite/duplicate_increment'), 
+        $this->getTable('ecomdev_urlrewrite/duplicate_increment'),
         'duplicate_id', 'INT(10) UNSIGNED NOT NULL AUTO_INCREMENT'
     );
-    
+
     $this->getConnection()->update(
-        $this->getTable('index/process'), 
+        $this->getTable('index/process'),
         array(
             'status' => 'require_reindex'
         ),
         array(
-            'indexer_code = ?' => 'catalog_url' 
+            'indexer_code = ?' => 'catalog_url'
         )
     );
 }
