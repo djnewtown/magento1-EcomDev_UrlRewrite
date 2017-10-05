@@ -476,7 +476,11 @@ $table
     ->addColumn(
         'product_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null,
         array('unsigned' => true, 'nullable' => false, 'primary' => true)
-    );
+    )
+    ->addIndex($this->getIdxName(
+        'ecomdev_urlrewrite/product_relation',
+        array('store_id', 'category_id', 'product_id')
+    ), array('store_id', 'category_id', 'product_id'));
 
 
 $this->getConnection()->createTable($table);
